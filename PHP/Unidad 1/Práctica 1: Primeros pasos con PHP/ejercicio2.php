@@ -39,6 +39,7 @@ $valorCentro = rand(-100, 100);
     <link rel="stylesheet" href="../estilos/estiloEj2.css">
 </head>
 <body>
+    <h2>Ejercicio 2: Arrays bidimensionales</h2>
 
 <table>
     <?php

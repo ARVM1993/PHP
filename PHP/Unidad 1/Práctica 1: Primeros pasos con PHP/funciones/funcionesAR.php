@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1>EJERCICIO 3: FUNCIONES</h1>
+<h2>EJERCICIO 3: FUNCIONES</h2>
 
 <h2>Funcion: filtrar</h2>
 <?php

@@ -69,9 +69,30 @@ function calcularMedias($calificaciones){
 
 }
 
+/*
+  Esta función comprobará si un alimento de la array contiene alérgenos y
+  nos devolverá los alérgenos asociados al alimento de existir 
+  o un mensaje de error si el alimento no se encuentra.
+ 
+  Pasaremos como parámetros estas variables:
+  
+  $alimento: String que representa el nombre del alimento a verificar.
+  $listaAlimentos: array asociativo donde las claves son nombres de alimentos 
+  y los valores son arrays de alérgenos asociados a cada alimento.
+ 
+  return: nos devolverá un String de alérgenos si el alimento existe en la lista. 
+ */
+function verificarAlergenos($alimento, $listaAlimentos) {
+    foreach ($listaAlimentos as $key => $alergenos) {
+        if ($key === $alimento) {
+            return implode (' ' , $alergenos); 
+        }
+    }
+}
 
-?>
-    
+
+
+?>   
 
 </body>
 </html>

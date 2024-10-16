@@ -4,7 +4,7 @@ $libros = [
     'libro1' => [
         'titulo' => 'la mala costumbre',
         'autoria' => 'alana s. portero',
-        'año' => 2023
+        'año' => 2023,
     ],
     'libro2' => [
         'titulo' => 'lo que hay',
@@ -14,7 +14,28 @@ $libros = [
     'libro3' => [
         'titulo' => 'las malas',
         'autoria' => 'camila sosa villada',
-        'año' => 2019
+        'año' => 2019  
+    ]
+];
+
+$librosConPaginas = [
+    'libro1' => [
+        'titulo' => 'la mala costumbre',
+        'autoria' => 'alana s. portero',
+        'año' => 2023,
+        'paginas' => 336 
+    ],
+    'libro2' => [
+        'titulo' => 'lo que hay',
+        'autoria' => 'sara torres',
+        'año' => 2022
+       
+    ],
+    'libro3' => [
+        'titulo' => 'las malas',
+        'autoria' => 'camila sosa villada',
+        'año' => 2019,
+        'paginas' => 240 
     ]
 ];
 
@@ -63,53 +84,19 @@ foreach ($libros as $libro) {
         formatear($libro["autoria"], true) . " tiene " .
         antiguedad($libro["año"]) . año(antiguedad($libro["año"])) . $libro["año"] . ".<br>";
 }
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tabla de Libros</title>
-    <style>
-        table {
-            width: 60%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
 
-<h2>Lista de Libros</h2>
-
-<table>
-    <tr>
-        <th>Título</th>
-        <th>Autoria</th>
-        <th>Año</th>
-        <th>Antigüedad</th>
-    </tr>
-
-    <?php
-    foreach ($libros as $libro) {
-        echo "<tr>";
-        echo "<td>" . formatear($libro["titulo"], false) . "</td>";
-        echo "<td>" . formatear($libro["autoria"], true) . "</td>";
-        echo "<td>" . $libro["año"] . "</td>";
-        echo "<td>" . antiguedad($libro["año"]) . " años</td>";
-        echo "</tr>";
+function imprimirLibros($librosConPaginas) {
+    foreach ($librosConPaginas as $libro) {
+       
+        if (isset($libro['paginas'])) {
+            $paginas = $libro['paginas'];
+        } else {
+            $paginas = "No definido";
+        }
     }
-    ?>
+}
+?>
 
-</table>
 
 </body>
 </html>
