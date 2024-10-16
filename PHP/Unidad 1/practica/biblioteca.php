@@ -46,11 +46,22 @@ function antiguedad($año1, $año2 = null) {
     return $antiguedadLibro;
 }
 
+function año ($año){
+    if ($año > 1) {
+        return "  años desde su publicación es ";
+    }elseif ($año  == 1) {
+        return " año desde su publicación es ";
+    }
+        return " es del mismo año";
+
+
+}
+
 // Itera sobre todos los libros
 foreach ($libros as $libro) {
     echo "El libro " . formatear($libro["titulo"], false) . " escrito por " .
         formatear($libro["autoria"], true) . " tiene " .
-        antiguedad($libro["año"]) . " años desde su publicación en " . $libro["año"] . ".<br>";
+        antiguedad($libro["año"]) . año(antiguedad($libro["año"])) . $libro["año"] . ".<br>";
 }
 ?>
 <!DOCTYPE html>
