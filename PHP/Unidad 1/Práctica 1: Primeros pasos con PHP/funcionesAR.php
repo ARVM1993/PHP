@@ -52,7 +52,7 @@ function describirPersona($arrayPersonas){
  
 }
 
-function calcularMedias($calificaciones){
+function calcularMedias($calificaciones) {
     $medias =[];
     $suma =0;
 

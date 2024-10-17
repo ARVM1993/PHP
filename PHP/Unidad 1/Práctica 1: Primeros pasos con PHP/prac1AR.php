@@ -239,14 +239,13 @@ include "./funciones/biblioteca.php";
         echo "<td>" . formatear($paginas["autoria"], true) . "</td>";
         echo "<td>" . $paginas["año"] . "</td>";
         echo "<td>" . antiguedad($paginas["año"]) . " años</td>";
-        echo "<td>" . imprimirLibros($paginas). "</td>";
+        echo "<td>" . mostrarPaginas($paginas). "</td>";
         echo "</tr>";
     }
     ?>
 </table>
 
 
-    
 </body>
 </html>
 </body>

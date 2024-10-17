@@ -74,29 +74,24 @@ function año ($año){
         return " año desde su publicación es ";
     }
         return " es del mismo año";
-
-
 }
 
-// Itera sobre todos los libros
 foreach ($libros as $libro) {
     echo "El libro " . formatear($libro["titulo"], false) . " escrito por " .
         formatear($libro["autoria"], true) . " tiene " .
         antiguedad($libro["año"]) . año(antiguedad($libro["año"])) . $libro["año"] . ".<br>";
 }
 
-function imprimirLibros($librosConPaginas) {
-    foreach ($librosConPaginas as $libro) {
+function mostrarPaginas($libro) {
        
-        if (isset($libro['paginas'])) {
-            $paginas = $libro['paginas'];
+        if (isset($libro["paginas"])) {
+            return $libro["paginas"];
         } else {
-            $paginas = "No definido";
+            return "No definido";
         }
     }
-}
-?>
 
+?>
 
 </body>
 </html>

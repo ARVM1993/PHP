@@ -44,8 +44,8 @@ $valorCentro = rand(-100, 100);
 <table>
     <?php
   for ($i = 0; $i < $filas; $i++) {
-    echo "<tr>"; // Declramos una nueva fila
-    for ($j = 0; $j < $columnas; $j++) { //Declramos una nueva columna
+    echo "<tr>"; // Declaramos una nueva fila
+    for ($j = 0; $j < $columnas; $j++) { //Declaramos una nueva columna
            $class = ""; // Declaramos una clase vacia para utilizarla en el CSS
         if ($i == $j) { //si la posicion de $i y $j es la misma, significan que estan en la diagonal (\)
             $class = "diagonal1"; //coge el color de la propiedad "diagonal1"; (\)
