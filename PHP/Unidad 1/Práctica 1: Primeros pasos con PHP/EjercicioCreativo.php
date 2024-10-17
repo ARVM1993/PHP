@@ -4,36 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enfrentamientos Dragon Ball</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-        table {
-            width: 50%;
-            margin: 50px auto;
-            border-collapse: collapse;
-            background-color: white;
-        }
-        th, td {
-            padding: 15px;
-            text-align: center;
-            border: 1px solid #ccc;
-        }
-        th {
-            background-color: #f4b400;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-    </style>
+
 </head>
 <body>
     <h1>Enfrentamientos de Dragon Ball</h1>
@@ -41,51 +12,44 @@
     <?php
     // Array asociativo con personajes, su vida y habilidades
     $personajes = [
-        "Goku" => ["vida" => 100, "habilidades" => "Kamehameha"],
-        "Vegeta" => ["vida" => 100, "habilidades" => "Final Flash"],
-        "Gohan" => ["vida" => 90, "habilidades" => "Masenko"],
-        "Piccolo" => ["vida" => 80, "habilidades" => "Special Beam Cannon"],
-        "Trunks" => ["vida" => 85, "habilidades" => "Burning Attack"],
-        "Frieza" => ["vida" => 100, "habilidades" => "Death Beam"]
+        "Goku" => ["vida"=>200, "fuerza" => rand(0,100), "tecnica" => "Kamehameha"],
+        "Vegeta" => ["vida"=>200, "fuerza" => rand(0,100), "tecnica" => "Big Bang"],
+        "Gohan" => ["vida"=>200, "fuerza" => rand(0,100), "tecnica" => "Masenko"],
+        "Piccolo" => ["vida"=>200, "fuerza" => rand(0,100), "tecnica" => "Special Beam Cannon"],
+        "Trunks" => ["vida"=>200, "fuerza" => rand(0,100), "tecnica" => "Burning Attack"],
+        "Frieza" => ["vida"=>200, "fuerza" => rand(0,100), "tecnica" => "Death Beam"],
+        "Celula" => ["vida"=>200, "fuerza" => rand(0,100), "tecnica" => "Kamehameha perfecto"],
+        "Bu" => ["vida"=>200, "fuerza" => rand(0,100), "tecnica" => "Destruccion Planetaria"],
+
+
     ];
 
     // Función para comprobar si los personajes están al mismo nivel de vida
-    function mismoNivel($p1, $p2, $personajes) {
-        return $personajes[$p1]["vida"] == $personajes[$p2]["vida"];
-    }
-
-    // Función para generar enfrentamientos aleatorios si están al mismo nivel
-    function generarEnfrentamientos($personajes) {
-        $nombres = array_keys($personajes);
-        shuffle($nombres); // Mezclar personajes aleatoriamente
-
-        $enfrentamientos = [];
-        for ($i = 0; $i < count($nombres) - 1; $i += 2) {
-            $p1 = $nombres[$i];
-            $p2 = $nombres[$i + 1];
-
-            // Comprobar si están al mismo nivel de vida antes de enfrentarlos
-            if (mismoNivel($p1, $p2, $personajes)) {
-                $enfrentamientos[] = [$p1, $p2];
+    function agruparPersonajes($personajes) {
+        $nombres = array_keys($personajes); // Obtener solo los nombres
+        shuffle($nombres); // Mezclar los nombres aleatoriamente
+        $grupos = []; // Inicializar un array para almacenar los grupos
+    
+        // Agrupar de 2 en 2
+        for ($i = 0; $i < count($nombres); $i += 2) {
+            // Asegurarse de que no se salga del array
+            if (isset($nombres[$i + 1])) {
+                $grupos[] = [$nombres[$i], $nombres[$i + 1]]; // Agregar un grupo de 2
+            } else {
+                $grupos[] = [$nombres[$i]]; // Si hay un número impar, agregar el último personaje solo
             }
         }
-
-        return $enfrentamientos;
-    }
-
-    // Generar enfrentamientos
-    $enfrentamientos = generarEnfrentamientos($personajes);
     
-    // Mostrar enfrentamientos en una tabla
-    if (count($enfrentamientos) > 0) {
-        echo "<table>";
-        echo "<tr><th>Personaje 1</th><th>VS</th><th>Personaje 2</th></tr>";
-        foreach ($enfrentamientos as $enfrentamiento) {
-            echo "<tr><td>{$enfrentamiento[0]}</td><td>VS</td><td>{$enfrentamiento[1]}</td></tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "<p style='text-align: center;'>No hay enfrentamientos disponibles con personajes del mismo nivel.</p>";
+        return $grupos; // Devolver los grupos formados
+    }
+    
+    // Ejecutar la función
+    $gruposDePersonajes = agruparPersonajes($personajes);
+    
+    // Mostrar los grupos
+    echo "<h2>Grupos de Personajes:</h2>";
+    foreach ($gruposDePersonajes as $grupo) {
+        echo "<p>Grupo: " . implode(" y ", $grupo) . "</p>";
     }
     ?>
 </body>

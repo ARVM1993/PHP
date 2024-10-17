@@ -243,6 +243,13 @@ include "./funciones/biblioteca.php";
         echo "</tr>";
     }
     ?>
+    <?php
+
+
+
+
+
+    ?>
 </table>
 
 
