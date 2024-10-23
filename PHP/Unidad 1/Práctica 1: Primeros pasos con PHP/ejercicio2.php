@@ -28,7 +28,6 @@ for ($i = 0; $i < $filas; $i++) {
 // Calcular el valor del centro
 $valorCentro = rand(-100, 100);
 
-// Imprimir la tabla HTML
 ?>
 <!DOCTYPE html>
 <html lang="es">

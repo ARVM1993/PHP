@@ -14,6 +14,12 @@
             color: #333;
         }
 
+        p{
+            text-align: center;
+            
+            
+        }
+
         h1 {
             text-align: center;
             color: #ffcc00;
@@ -42,7 +48,6 @@
             color: #000;
         }
 
-        /* Estilos para los contenedores de los enfrentamientos */
         .enfrentamiento {
             margin-bottom: 30px;
         }
@@ -50,10 +55,20 @@
 </head>
 
 <body>
+    <p>¡BIENVENIDOS AL TORNEO DE CAMPEONES!
+        Con motivo del estreno del Sparking Zero realizaremos un combate de exhibición en PHP que sirva de presentación.
+        Para realizar este torneo primero almacenaremos a los luchadores en un array asociativo con todos sus datos. 
+        Posteriormente pasaremos a formar las alineaciones para que a continuación se lancen al combate, eliminandose en rondas
+        y actualizando el resultado hasta que solo quede un campeón. Muy importante que TODO EL PROCESO esté automátizado e ideado
+        para que no haya que modificar ni una sola lÍnea de código en caso de añadir o eliminarse a cualquier luchador de la array.
+        Dicho lo cual ¡QUE EMPIECE EL TORNEO!
+    </p>
     <h1>Enfrentamientos de Dragon Ball</h1>
 
+    
     <?php
-    // Array asociativo con personajes, su vida y habilidades
+    /* Empezamos definiendo un array asociativo bidimensional con los luchadores donde el nombre 
+    del luchador es la clave y el valor es otro array asociativo con sus datos*/
     $personajes = [
         "Goku" => ["vida" => 200, "fuerza" => rand(0, 100), "tecnica" => "Kamehameha"],
         "Vegeta" => ["vida" => 200, "fuerza" => rand(0, 100), "tecnica" => "Big Bang"],
@@ -65,83 +80,22 @@
         "Bu" => ["vida" => 200, "fuerza" => rand(0, 100), "tecnica" => "Destruccion Planetaria"],
     ];
 
-    function agruparPersonajes($personajes) {
-        $nombres = array_keys($personajes); 
-        shuffle($nombres); 
-        $grupos = []; 
+    require "FuncionesEjercicioCreativo.php";
 
-        for ($i = 0; $i < count($nombres); $i += 2) {
-            if (isset($nombres[$i + 1])) {
-                $grupos[] = [$nombres[$i], $nombres[$i + 1]]; 
-            } else {
-                $grupos[] = [$nombres[$i]]; 
-            }
-        }
-
-        return $grupos; 
-    }
-
-    function enfrentamientosPersonajes($grupos, &$personajes) {
-        echo "<h2>Resultados de los Enfrentamientos:</h2>";
-        $ganadores = []; 
-
-        foreach ($grupos as $grupo) {
-            echo "<div class='enfrentamiento'>";
-            if (count($grupo) == 2) {
-                $personaje1 = $grupo[0];
-                $personaje2 = $grupo[1];
-
-                echo "<h3>$personaje1 VS $personaje2</h3>";
-
-                $vidaPersonaje1 = $personajes[$personaje1]["vida"];
-                $vidaPersonaje2 = $personajes[$personaje2]["vida"];
-
-                while ($vidaPersonaje1 > 0 && $vidaPersonaje2 > 0) {
-                  
-                    $vidaPersonaje2 -= $personajes[$personaje1]["fuerza"];
-                    
-                    if ($vidaPersonaje2 > 0) {
-                        echo "<p><strong>$personaje1</strong> utiliza {$personajes[$personaje1]["tecnica"]} y hace {$personajes[$personaje1]['fuerza']} puntos de daño a $personaje2</p>";
-                    } else {
-                        echo "<p><strong>$personaje1</strong> usa {$personajes[$personaje1]["tecnica"]} y elimina a $personaje2</p>";
-                        $ganadores[] = $personaje1; 
-                        break;
-                    }
-
-                    $vidaPersonaje1 -= $personajes[$personaje2]["fuerza"];
-                    
-                    if ($vidaPersonaje1 > 0) {
-                        echo "<p><strong>$personaje2</strong> contraataca con {$personajes[$personaje2]["tecnica"]} y hace {$personajes[$personaje2]['fuerza']} puntos de daño a $personaje1</p>";
-                    } else {
-                        echo "<p><strong>$personaje2</strong> usa {$personajes[$personaje2]["tecnica"]} y elimina a $personaje1</p>";
-                        $ganadores[] = $personaje2; 
-                        break;
-                    }
-                }
-            } else {
-               
-                $personaje1 = $grupo[0];
-                echo "<p><strong>$personaje1</strong> no tiene oponente, pasa automáticamente a la siguiente ronda.</p>";
-                $ganadores[] = $personaje1;
-            }
-            echo "</div>"; 
-        }
-
-        return $ganadores; 
-    }
-
-    
     $ronda = 1;
-    while (count($personajes) > 1) {
+    while (count($personajes) > 1) { //mientras haya mas de un personaje se repitan las funciones y eliminen a los que pierden
         echo "<h2>Ronda $ronda</h2>";
         $gruposDePersonajes = agruparPersonajes($personajes); 
-        $ganadores = enfrentamientosPersonajes($gruposDePersonajes, $personajes); 
+        $ganadores = enfrentamientosPersonajes($gruposDePersonajes, $personajes);
+        /*array_intersect_key comparará dos arrays asociativos y devolvera las claves,
+        mientras que con array_flip cambiará  las claves por los valores de la array de personajes, de forma que el nombre
+        de ambas arrays asociativas sean los mismos, por lo que se pueden comparar directamente*/
         
         $personajes = array_intersect_key($personajes, array_flip($ganadores));
         $ronda++;
     }
 
-    $ganadorFinal = array_keys($personajes)[0];
+    $ganadorFinal = array_keys($personajes)[0]; //finalmente devolverá el valor de la clave del ganador
     echo "<h1>El ganador final es <strong>$ganadorFinal</strong>!</h1>";
     ?>
 
