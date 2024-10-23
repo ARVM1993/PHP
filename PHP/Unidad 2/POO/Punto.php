@@ -20,7 +20,6 @@ class Punto {
 
 
     public function __toString() {
-        // Use proper string concatenation with the dot (.)
         return $this->coordX . ", " . $this->coordY;
     }
 }

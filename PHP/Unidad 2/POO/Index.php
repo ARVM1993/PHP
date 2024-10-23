@@ -23,7 +23,6 @@
     $punto = new Punto(5, 5);
     echo $punto->__toString();
 
-
     ?>
     
 </body>

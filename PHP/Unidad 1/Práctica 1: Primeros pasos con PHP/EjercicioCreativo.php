@@ -60,34 +60,30 @@
         "Gohan" => ["vida" => 200, "fuerza" => rand(0, 100), "tecnica" => "Masenko"],
         "Piccolo" => ["vida" => 200, "fuerza" => rand(0, 100), "tecnica" => "Special Beam Cannon"],
         "Trunks" => ["vida" => 200, "fuerza" => rand(0, 100), "tecnica" => "Burning Attack"],
-        "Frieza" => ["vida" => 200, "fuerza" => rand(0, 100), "tecnica" => "Death Beam"],
-        "Celula" => ["vida" => 200, "fuerza" => rand(0, 100), "tecnica" => "Kamehameha perfecto"],
+        "Freezer" => ["vida" => 200, "fuerza" => rand(0, 100), "tecnica" => "Rayo de la muerte"],
+        "Cell" => ["vida" => 200, "fuerza" => rand(0, 100), "tecnica" => "Kamehameha perfecto"],
         "Bu" => ["vida" => 200, "fuerza" => rand(0, 100), "tecnica" => "Destruccion Planetaria"],
     ];
 
-    // Función para agrupar personajes aleatoriamente de 2 en 2
-    function agruparPersonajes($personajes)
-    {
-        $nombres = array_keys($personajes); // Obtener solo los nombres
-        shuffle($nombres); // Mezclar los nombres aleatoriamente
-        $grupos = []; // Inicializar un array para almacenar los grupos
+    function agruparPersonajes($personajes) {
+        $nombres = array_keys($personajes); 
+        shuffle($nombres); 
+        $grupos = []; 
 
-        // Agrupar de 2 en 2
         for ($i = 0; $i < count($nombres); $i += 2) {
             if (isset($nombres[$i + 1])) {
-                $grupos[] = [$nombres[$i], $nombres[$i + 1]]; // Agregar un grupo de 2
+                $grupos[] = [$nombres[$i], $nombres[$i + 1]]; 
             } else {
-                $grupos[] = [$nombres[$i]]; // Si hay un número impar, agregar el último personaje solo
+                $grupos[] = [$nombres[$i]]; 
             }
         }
 
-        return $grupos; // Devolver los grupos formados
+        return $grupos; 
     }
 
-    // Función para realizar enfrentamientos entre los personajes y devolver los ganadores
     function enfrentamientosPersonajes($grupos, &$personajes) {
         echo "<h2>Resultados de los Enfrentamientos:</h2>";
-        $ganadores = []; // Almacena los ganadores de cada enfrentamiento
+        $ganadores = []; 
 
         foreach ($grupos as $grupo) {
             echo "<div class='enfrentamiento'>";
@@ -115,7 +111,7 @@
                     $vidaPersonaje1 -= $personajes[$personaje2]["fuerza"];
                     
                     if ($vidaPersonaje1 > 0) {
-                        echo "<p><strong>$personaje2</strong> contrataca con {$personajes[$personaje2]["tecnica"]} y hace {$personajes[$personaje2]['fuerza']} puntos de daño a $personaje1</p>";
+                        echo "<p><strong>$personaje2</strong> contraataca con {$personajes[$personaje2]["tecnica"]} y hace {$personajes[$personaje2]['fuerza']} puntos de daño a $personaje1</p>";
                     } else {
                         echo "<p><strong>$personaje2</strong> usa {$personajes[$personaje2]["tecnica"]} y elimina a $personaje1</p>";
                         $ganadores[] = $personaje2; 
