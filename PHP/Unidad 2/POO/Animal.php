@@ -66,3 +66,4 @@ $leon1 =new  Leon ("carnivoro", 4, true);
 echo $leon1->rugir();
 echo "<br>";
 echo  $leon1;
+

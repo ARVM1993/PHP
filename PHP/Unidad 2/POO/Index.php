@@ -24,6 +24,29 @@
     echo $punto->__toString();
 
     ?>
+
+<h2>Prueba con la Clase Cuadrado</h2>
+    <?php
+    require_once "Poligono.php";
+    require_once "Cuadrado.php";
+
+    $cuadrado1= new Cuadrado(4, "rojo");
+    print_r("El area del cuadrado es " .$cuadrado1 ->calcularArea() . "<br>");
+   
+    print_r("El perimetro del cuadrado es " .$cuadrado1 ->calcularPerimetro() . "<br>");
+    echo $cuadrado1;
+    ?>
+
+    <h2>Prueba con la Clase TrianguloRectangulo</h2>
+    <?php
+    require_once "Poligono.php";
+    require_once "TrianguloEquilatero.php";
+    // Crear el triángulo con lado = 4.8 y altura = 5.3, con color por defecto
+    $t1 = new TrianguloEquilatero(4.8, 5.3);
+    print_r("El area del triangulo es " . $t1->calcularArea() . "<br>");       
+    print_r("El perimetro del triangulo es " . $t1->calcularPerimetro() . "<br>");  
+    echo $t1;  
     
+?>
 </body>
 </html>
