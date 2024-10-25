@@ -62,9 +62,9 @@
  for ($i = 0; $i < 3; $i++) { 
     for ($j = 0; $j < 12; $j++) { 
         if ($i < $j) {
-            echo "*";  
+            echo " *";  
         } else {
-            echo " "; 
+            echo "&nbsp "; 
         }
     }
     echo "<br>";  
