@@ -17,5 +17,11 @@ abstract class Poligono {
 
     public abstract function calcularArea(): float;
     public abstract function calcularPerimetro(): float;
+
+
+//El siguiente metodo si no lo declaramos final, lo tienen que heredar las clases hijas
+    final public function cambiarColor($nuevoColor){
+        $this->color = $nuevoColor;
+    }
     
 }

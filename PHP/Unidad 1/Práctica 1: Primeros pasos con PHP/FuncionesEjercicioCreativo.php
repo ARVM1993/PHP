@@ -6,7 +6,7 @@ function agruparPersonajes($personajes) {
     $grupos = []; 
 
     for ($i = 0; $i < count($nombres); $i += 2) { //agruparemos a los personajes en arrays de dos en dos 
-        if (isset($nombres[$i + 1])) { //si hay un numero impar de personajes,  el ultimo grupo solo tenga un personaje
+        if (isset($nombres[$i + 1])) { //si hay un numero impar de personajes, el ultimo grupo solo tenga un personaje
             $grupos[] = [$nombres[$i], $nombres[$i + 1]]; 
         } else {
             $grupos[] = [$nombres[$i]]; 

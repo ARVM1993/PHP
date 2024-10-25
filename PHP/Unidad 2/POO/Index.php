@@ -46,7 +46,8 @@
     print_r("El area del triangulo es " . $t1->calcularArea() . "<br>");       
     print_r("El perimetro del triangulo es " . $t1->calcularPerimetro() . "<br>");  
     echo $t1;  
-    
+
+
 ?>
 </body>
 </html>

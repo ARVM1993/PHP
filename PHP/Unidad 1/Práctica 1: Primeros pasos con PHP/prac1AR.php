@@ -73,6 +73,22 @@
     ?>
     <h3>Sexta figura</h3>
     <?php
+// Número de filas
+$filas = 3; // Solo 3 filas
+$columnas = 12; // Total de columnas (espacios)
+
+// Generar la figura
+for ($i = 1; $i <= $filas; $i++) {
+    // Imprimir espacios
+    for ($j = $columnas - $i; $j > 0; $j--) {
+        echo "&nbsp;"; // Espacio para mantener la alineación
+    }
+    // Imprimir asteriscos
+    for ($k = 1; $k <= $i; $k++) {
+        echo "* "; // Imprime el asterisco
+    }
+    echo "<br>"; // Nueva línea después de cada fila
+}
 
     ?>
 

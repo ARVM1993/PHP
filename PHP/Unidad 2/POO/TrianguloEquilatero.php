@@ -25,7 +25,7 @@ class TrianguloEquilatero extends Poligono {
         }
 
         public function __toString():string{
-            return parent::__toString()  . " ·lado: {$this->lado}  ·altura: {$this->altura}";
+            return parent::__toString()  . " lado: {$this->lado}  altura: {$this->altura}";
         }
 
     
@@ -36,7 +36,6 @@ class TrianguloEquilatero extends Poligono {
     }
     public function calcularPerimetro(): float{
         return ($this->lado*3);
-
     }
 
 }
