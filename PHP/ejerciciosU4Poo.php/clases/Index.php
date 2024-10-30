@@ -20,6 +20,7 @@ echo "<br>";
 $sueldoNetoEmpleade2 = $empleade2->pagarImpuestos();
 echo "Sueldo neto después de pagar impuestos: $sueldoNetoEmpleade2";
 echo "<br>";
+echo "Numero de telefono: " .$empleade1->añadirTelefono();
 echo $empleade2->toHtml();
 echo "<br>";
 

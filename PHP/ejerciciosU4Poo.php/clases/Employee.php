@@ -16,7 +16,7 @@ class Employee extends Person{
             if ($this->getSalary() == -1) {
                 return -1; 
             }
-            if ($this->getSalary() < 12450) {
+            elseif ($this->getSalary() < 12450) {
                 $irpf = $this->getSalary() * (19 / 100);
             } elseif ($this->getSalary() < 20199) {
                 $irpf = $this->getSalary() * (24 / 100);
@@ -30,14 +30,13 @@ class Employee extends Person{
                 $irpf = $this->getSalary() * (47 / 100);
             }
     
-            return $$irpf; 
+            return $irpf; 
     
 
         }
          function addTelephone(int $telephone): void{
-            /*cuando el tipo es un primitivo puedes trabajar directamente con 
-            con el, pero cuando es de un tipo mas complejo como un array
-            tienes que hacerlo por medio de una variable*/
+           // array_push($this->getTelephones(), $telephone);
+        
         $telephones = $this->getTelephones();
         $telephones[] = $telephone; 
         $this->setTelephones($telephones);

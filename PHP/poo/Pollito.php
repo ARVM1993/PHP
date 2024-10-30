@@ -6,7 +6,7 @@ class Pollito extends Animal implements Correr{
 
     public function __construct(array $parameters =[]){
         parent::__construct();
-        $this->setAge($parameters["age"] ?? 1);
+        $this->setAge($parameters["age"] ?? 4);
         $this->descripcion = $parameters["descripcion"] ?? "es amarillo y pequeñin";    
     }
 
@@ -33,7 +33,7 @@ public function velocidad(){
 
 }
 
-$pollito1 = new Pollito(["age"=> 1, "descripcion" => "es gordito"]);
+$pollito1 = new Pollito(["age", "descripcion" => "es gordito"]);
 $pollito1->showInfo();
 $pollito1->talk();
 $pollito1->velocidad();
@@ -41,7 +41,7 @@ $pollito1->velocidad();
 
 echo "<br>";
 
-$pollito2 = new Pollito();
+$pollito2 = new Pollito(["age" => 2, "descripcion" => "es gordito"]);
 $pollito2->showInfo();
 $pollito2->talk();
 $pollito2->velocidad();

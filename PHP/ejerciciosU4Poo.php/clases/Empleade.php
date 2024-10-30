@@ -42,7 +42,7 @@ class Empleade{
 
         public function __toString(){
             return "El/la empleade se llama " . $this->nombre . " " . $this->apellidos . 
-            " y su sueldo es de " . $this->sueldo;
+            " y su sueldo es de " . $this->sueldo . "y sus telefonos " . $this->telefonos[];
         }
         
         public function getNombreCompleto(){
@@ -67,6 +67,7 @@ class Empleade{
             } else {
                 $irpf = $this->sueldo * (47 / 100);
             }
+            
     
             $sueldoNeto = $this->sueldo - $irpf; 
             return $sueldoNeto; 

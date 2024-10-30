@@ -5,7 +5,7 @@ include_once "Person.php";
 class Manager extends Person{
     private int $seniority;
 
-    public function __construct($name, $surname, $salary, $telephones = [], $seniority){
+    public function __construct($name, $surname, $salary, $telephones, $seniority){
         parent::__construct($name, $surname, $salary, $telephones);    
         $this->seniority = $seniority;
     }
@@ -38,14 +38,12 @@ class Manager extends Person{
             $irpf = $this->getSalary() * (47 / 100);
         }
 
-        return $$irpf; 
+        return $irpf; 
 
 
     }
-     function addTelephone(int $telephone): void{
-        /*cuando el tipo es un primitivo puedes trabajar directamente con 
-        con el, pero cuando es de un tipo mas complejo como un array
-        tienes que hacerlo por medio de una variable*/
+    function addTelephone(int $telephone): void{
+        
     $telephones = $this->getTelephones();
     $telephones[] = $telephone; 
     $this->setTelephones($telephones);
@@ -62,9 +60,7 @@ class Manager extends Person{
 
     }
 
-
     function emptyTelephones(): void{
-
         $this->setTelephones([]);
 
     }
