@@ -90,8 +90,6 @@ function verificarAlergenos($alimento, $listaAlimentos) {
     }
 }
 
-
-
 ?>   
 
 </body>

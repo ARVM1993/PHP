@@ -7,7 +7,7 @@ table {
 th, td {
     border: 1px solid #ddd;
     padding: 10px;
-    text-align: center; /* Alineamos los numeros para que queden en el centro */
+    text-align: center; /* Alinea los numeros para que queden en el centro */
     margin: 5px; /* Espacio entre las celdas */
 }
 
@@ -22,16 +22,16 @@ th, td {
     font-weight: bold;
 }
 
-/* Color de ambas diagonales */
+/* Color de ambas diagonales en función del valor que presente $class, la diagonal1 es "/" y la diagonal2 es "\" */
 .diagonal1 {
-    background-color: #FF0000  ; /* Color para la diagonal / */
+    background-color: #FF0000; 
 }
 
 .diagonal2 {
-    background-color: #FFFF00; /* Color para la diagonal \ */
+    background-color: #FFFF00; 
 }
 
-/* Color de la celda central */
+
 .centro {
-    background-color: #ff8000; /* Color de la celda central como combinación */
+    background-color: #ff8000; /* Color de la celda central como combinación de la diagonal1 y la diagonal2 */
 }

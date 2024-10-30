@@ -41,15 +41,15 @@ $librosConPaginas = [
 
 function formatear($cadenaCaracteres, $booleano) {
     if ($booleano === true) {
-        // Divide la cadena en palabras
+        // Utilizaremos la funcion explode para convertir una cadena de caracteres en un array de caracteres
         $palabras = explode(" ", $cadenaCaracteres);
-        foreach ($palabras as &$palabra) {
-            // Capitaliza la primera letra de cada palabra
+        foreach ($palabras as &$palabra) {//pasamos palabra por parametro para que los cambios aplicados se respeten una vez fuera del bucle
+            // Elegimos el primer caracter de la palabra y le utilizamos strtoupper para que haga convierta en mayuscula
             $palabra[0] = strtoupper($palabra[0]);
         }
-        return implode(" ", $palabras); // Junta las palabras
+        return implode(" ", $palabras); // Implode nos devolverá los caracteres de la array unidos en un string
     } elseif ($booleano === false) {
-        // Capitaliza solo la primera letra de la cadena completa
+        // Si no se cumple solo hace mayuscula la primera letra de la cadena completa
         $cadenaCaracteres[0] = strtoupper($cadenaCaracteres[0]);
         return $cadenaCaracteres;
     }
@@ -67,6 +67,8 @@ function antiguedad($año1, $año2 = null) {
     return $antiguedadLibro;
 }
 
+
+//vamos a añadir una función extra para corregir el fallo y no aplique la palabra "años" cuando tiene que estar en singular
 function año ($año){
     if ($año > 1) {
         return "  años desde su publicación es ";
@@ -77,9 +79,12 @@ function año ($año){
 }
 
 foreach ($libros as $libro) {
+
+        //Como solo queremos que formatear se aplique a un determinado valor de la array accedemos primero a ella por el clave y despues por el titulo
     echo "El libro " . formatear($libro["titulo"], false) . " escrito por " .
         formatear($libro["autoria"], true) . " tiene " .
         antiguedad($libro["año"]) . año(antiguedad($libro["año"])) . $libro["año"] . ".<br>";
+
 }
 
 function mostrarPaginas($libro) {

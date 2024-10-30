@@ -5,53 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enfrentamientos Dragon Ball</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-
-        p{
-            text-align: center;
-            
-            
-        }
-
-        h1 {
-            text-align: center;
-            color: #ffcc00;
-            text-shadow: 2px 2px #ff0000;
-        }
-
-        h2 {
-            color: #ff6600;
-            margin-top: 20px;
-        }
-
-        h3 {
-            color: #cc0000;
-        }
-
-        p {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        strong {
-            color: #000;
-        }
-
-        .enfrentamiento {
-            margin-bottom: 30px;
-        }
-    </style>
+    <link rel="stylesheet" href="estilos/hoja.css">
+  
 </head>
 
 <body>
@@ -80,7 +35,7 @@
         "Bu" => ["vida" => 200, "fuerza" => rand(0, 100), "tecnica" => "Destruccion Planetaria"],
     ];
 
-    require "FuncionesEjercicioCreativo.php";
+    require "funciones/funcionesEjercicioCreativo.php";
 
     $ronda = 1;
     while (count($personajes) > 1) { //mientras haya mas de un personaje se repitan las funciones y eliminen a los que pierden

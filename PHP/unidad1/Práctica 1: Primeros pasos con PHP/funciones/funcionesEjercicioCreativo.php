@@ -16,7 +16,7 @@ function agruparPersonajes($personajes) {
     return $grupos; 
 }
 //realizaremos los enfrentamiento
-function enfrentamientosPersonajes($grupos, &$personajes) {//pasamos personajes por referencia para poder modificarlo. De lo contrario no podriamos eliminar personajes del array
+function enfrentamientosPersonajes($grupos, &$personajes) {//$personajes por referencia para modificar la array. Si no, no podriamos eliminar luchadores del array
     echo "<h2>Resultados de los Enfrentamientos:</h2>";
     $ganadores = []; 
 
@@ -27,6 +27,11 @@ function enfrentamientosPersonajes($grupos, &$personajes) {//pasamos personajes 
             $personaje2 = $grupo[1];//almacenamos la posición de los personajes de la array en una variable, de forma que podamos acceder a los datos
 
             echo "<h3>$personaje1 VS $personaje2</h3>";
+
+            /*Para acceder al valor que queremos en este caso "vida" hay que ir profundizando por pasos dentro de la array:
+            1º: el nombre de la array a la que queremos acceder. En este caso $personajes
+            2º: una vez dentro, seleccionamos la clave que nos permita acceder a los valores. En este caso las claves están almacenadas en $personaje1 y $personaje2
+            3º: finalmente, nos faltaría elegir el valor que queremos utilizar, y lo llamamos por su nombre*/
 
             $vidaPersonaje1 = $personajes[$personaje1]["vida"];
             $vidaPersonaje2 = $personajes[$personaje2]["vida"];
