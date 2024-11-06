@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-
+//
 <?php
 $nombre = $edad = $estado = $suscrito = "";
 $nombreErr = $edadErr = "";
@@ -112,7 +112,11 @@ var_dump($_POST);
 
         <br>
         <label>
-            <input type="checkbox" name="suscrito" <?php if(!empty($suscrito)) echo "checked";?>>
+            <input 
+            type="checkbox" 
+            name="suscrito" 
+            <?php if(!empty($suscrito)) echo "checked";?>
+            >
             
             Quiero suscribirme a la newsletter
         </label>
