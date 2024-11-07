@@ -50,7 +50,7 @@
     ?>
 
     <!-- Formulario para introducir el nombre -->
-    <form method="POST">
+    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">>
         <label>Nombre:</label>
         <input type="text" name="name"><br>
         <input type="submit" name="enviar">

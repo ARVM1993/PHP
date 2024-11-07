@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($password2)) {
         $password2Err = "Se requiere repetir la contraseña";
         $errores = true;
+
     } elseif ($password !== $password2) {
         $password2Err = "Las contraseñas no coinciden";
         $errores = true;
@@ -81,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-    <form method="post">
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <label>Nombre: *</label>
         <input type="text" name="name" value="<?php echo htmlspecialchars($name); ?>">
         <span style="color:red;"><?php echo $nameErr; ?></span>

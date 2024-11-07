@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 var_dump($_POST);
 ?>
 
-    <form method="POST">
+    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <label>Nombre:</label>
         <input 
             type="text"
