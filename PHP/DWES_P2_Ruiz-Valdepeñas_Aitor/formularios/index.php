@@ -9,8 +9,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Bienvenido </h1>
-        <p>Seleccione una opcion.</p>
+        <h1>OLA K ASE? </h1>
+    
     </div>
     <?php include 'partes/pie.php'; ?>
 </body>

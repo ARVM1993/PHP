@@ -1,6 +1,4 @@
-/* estilos/style.css */
 
-/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,7 +6,6 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Estilo del menú */
 nav {
     background-color: #333;
     padding: 10px;
@@ -31,11 +28,14 @@ nav ul li a {
     font-size: 18px;
 }
 
+h1{
+    text-align: center;
+}
+
 nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Estilo del pie de página */
 footer {
     background-color: #333;
     color: white;
@@ -46,11 +46,11 @@ footer {
     bottom: 0;
 }
 
-/* Estilos adicionales para las páginas */
 .container {
     max-width: 800px;
+
     margin: 0 auto;
     padding: 20px;
     background-color: white;
-    margin-top: 50px; /* Espacio para el menú fijo */
+    margin-top: 50px; 
 }

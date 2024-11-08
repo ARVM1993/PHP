@@ -53,9 +53,11 @@ class Libro extends EjemplarImpreso{
         echo "<li>Número de Ejemplares Disponibles: " . $this->getNumeroEjemplaresDisponibles() . "</li>";
         echo "</ul>";    }
 
-        public function __toString() {
+    public function __toString() {
             return "Libro: " . $this->getTitulo() . " de " . $this->getAutoria() . " - ISBN: " . $this->getIsbn() . " - Páginas: " . $this->getNumeroPaginas();
-        }
+    }
+
+    
 
 
 }
