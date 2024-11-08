@@ -36,7 +36,7 @@
     <?php
         // Iniciar la sesión para almacenar los nombres introducidos
         session_start();
-
+        
         // Inicializar el array de nombres si no existe
         if (!isset($_SESSION['nombres'])) {
             $_SESSION['nombres'] = []; // Creamos el array vacío en la sesión

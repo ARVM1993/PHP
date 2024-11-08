@@ -15,7 +15,7 @@ abstract class EjemplarImpreso {
         
     }
 
-    public function getIsbn()   {
+    public function getIsbn(){
         return $this->isbn;
     }
 
