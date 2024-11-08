@@ -42,7 +42,7 @@ class Empleade{
 
         public function __toString(){
             return "El/la empleade se llama " . $this->nombre . " " . $this->apellidos . 
-            " y su sueldo es de " . $this->sueldo . "y sus telefonos " . $this->telefonos[];
+            " y su sueldo es de " . $this->sueldo . "y sus telefonos " . $this->telefonos["numero"];
         }
         
         public function getNombreCompleto(){
