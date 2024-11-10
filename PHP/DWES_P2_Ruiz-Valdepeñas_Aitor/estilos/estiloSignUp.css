@@ -1,0 +1,123 @@
+body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+    
+        background-image: url(../imagen/biblioteca.jpg);
+    }
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center; /* Centra el mensaje */
+    width: 100%; /* Hace que el mensaje ocupe todo el ancho disponible */
+    position: absolute; /* Posiciona el mensaje de error respecto al contenedor padre */
+    top: 20px; /* Ubica el mensaje 20px desde la parte superior */
+    left: 0; /* Alinea el mensaje al borde izquierdo */
+    z-index: 10; /* Asegura que el mensaje de error esté encima de otros elementos */
+}
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    background-color: #d4edda;  
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center; /* Centra el mensaje */
+    width: 100%; /* Hace que el mensaje ocupe todo el ancho disponible */
+    position: absolute; /* Posiciona el mensaje de éxito sobre el formulario */
+    top: 20px; /* Ubica el mensaje 20px desde la parte superior */
+    left: 0; /* Alinea el mensaje al borde izquierdo */
+    z-index: 10; /* Asegura que el mensaje de éxito esté encima de otros elementos */
+}
+.form-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #5a5a5a;
+}
+
+table {
+    width: 50%; /* Ocupa el 80% del ancho de la pantalla */
+    margin: 0 auto 20px auto; /* Centra la tabla y agrega un margen en la parte inferior */
+    border-collapse: collapse;
+    background-color: rgba(126, 0, 0, 0.8); /* Fondo rojo oscuro con opacidad */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Opcional: Ajustar las celdas para tener un fondo con transparencia también */
+td {
+    padding: 12px;
+    vertical-align: middle;
+    border: solid 1px #861818;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo transparente para las celdas */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+input[type="submit"],[type="reset"] {
+    background-color: rgb(155, 88, 88);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+span {
+    color: red;
+    font-size: 0.9em;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.form-footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}

@@ -1,5 +1,5 @@
 <?php
-require_once "./EjemplarImpreso.php";
+require_once "EjemplarImpreso.php";
 
 class Revista extends EjemplarImpreso{
 
@@ -41,9 +41,5 @@ class Revista extends EjemplarImpreso{
 
 }
 
-$revista1 = new Revista("978-1-23-456789-0", "Hola", 100);
-echo $revista1;
-echo $revista1->showInfo();
-echo $revista1->prestar();
 
 ?>

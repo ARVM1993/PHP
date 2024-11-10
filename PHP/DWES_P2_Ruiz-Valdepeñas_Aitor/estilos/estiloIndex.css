@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    background-image: url(../imagen/biblioteca.jpg);
+
+}
+
+table {
+    width: 80%;
+    margin: 50px auto;
+    border-collapse: collapse;
+    background-color: rgba(126, 0, 0, 0.8); 
+    color: white;
+    border-radius: 8px;
+}
+
+td{
+    text-align: center;
+}
+
+
+table td {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+table input[type="text"],
+table input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+table input[type="submit"],
+table input[type="reset"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+table input[type="submit"]:hover,
+table input[type="reset"]:hover {
+    background-color: #0056b3;
+}
+
+span {
+    font-size: 14px;
+}
+
+span.error {
+    color: red;
+}
+
+.error-message {
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.success-message {
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+form {
+    text-align: center;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+input[type="reset"] {
+    margin-bottom: 10px;
+}
+
+input[type="submit"], input[type="reset"] {
+    margin-top: 10px;
+}
+
+h1 {
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+span {
+    color: red;
+    font-size: 14px;
+}
