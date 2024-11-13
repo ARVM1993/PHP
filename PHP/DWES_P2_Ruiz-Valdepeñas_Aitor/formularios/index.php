@@ -1,4 +1,5 @@
 <?php
+//phpinfo();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -8,7 +9,7 @@ require_once '../clases/Revista.php';
 require_once '../clases/EjemplarImpreso.php';
 
 session_start();
-
+var_dump($_SESSION);
 if (!isset($_SESSION['libros'])) {
     $_SESSION['libros'] = [];
 }
@@ -16,6 +17,8 @@ if (!isset($_SESSION['libros'])) {
 if (!isset($_SESSION['revistas'])) {
     $_SESSION['revistas'] = [];
 }
+
+
 
 $isbnLibro = $tituloLibro = $paginasLibro = $autorLibro = $ejemplaresLibro = "";
 $isbnErrLibro = $tituloErrLibro = $paginasErrLibro = $autorErrLibro = $ejemplaresErrLibro = "";
@@ -164,6 +167,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </tr>
     <?php
     if (isset($_SESSION['libros']) && count($_SESSION['libros']) > 0) {
+
+        
         foreach ($_SESSION['libros'] as $libro) {
             echo "<tr>
                     <td>{$libro->getIsbn()}</td>
