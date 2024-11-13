@@ -29,7 +29,6 @@ class Libro extends EjemplarImpreso {
         $this->numeroEjemplaresDisponibles = $numeroEjemplaresDisponibles;
     }
 
-    // Método para prestar un libro
     public function prestar(): string {
         if ($this->numeroEjemplaresDisponibles > 0) {
             $this->numeroEjemplaresDisponibles--;
@@ -39,7 +38,6 @@ class Libro extends EjemplarImpreso {
         }
     }
 
-    // Método para mostrar la información del libro
     public function showInfo(): string {
         $info = "<ul>";
         $info .= "<li>ISBN: " . $this->getIsbn() . "</li>";
@@ -51,7 +49,6 @@ class Libro extends EjemplarImpreso {
         return $info;
     }
 
-    // Método __toString para imprimir el libro de forma legible
     public function __toString(): string {
         return "Libro: " . $this->getTitulo() . " de " . $this->getAutoria() . " - ISBN: " . $this->getIsbn() . " - Páginas: " . $this->getNumeroPaginas();
     }

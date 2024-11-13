@@ -16,9 +16,6 @@ table {
     border-radius: 8px;
 }
 
-td{
-    text-align: center;
-}
 
 
 table td {
@@ -60,6 +57,10 @@ span.error {
     color: red;
 }
 
+
+td{
+    text-align: center;
+}
 .error-message {
     text-align: center;
     margin: 20px auto;
@@ -114,7 +115,9 @@ h1 {
 
 h2 {
     text-align: center;
-    color: #333;
+    color: red;
+    background-color: white;
+
 }
 
 .form-container {

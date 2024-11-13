@@ -6,14 +6,12 @@ abstract class EjemplarImpreso {
     private string $titulo;
     private int $numeroPaginas;
 
-    // Constructor para inicializar los valores de las propiedades
     public function __construct(string $isbn, string $titulo, int $numeroPaginas) {
         $this->isbn = $isbn;
         $this->titulo = $titulo;
         $this->numeroPaginas = $numeroPaginas;
     }
 
-    // Métodos getter y setter
     public function getIsbn(): string {
         return $this->isbn;
     }
@@ -38,9 +36,8 @@ abstract class EjemplarImpreso {
         $this->numeroPaginas = $numeroPaginas;
     }
 
-    // Métodos abstractos
-    abstract public function prestar();   // Este método deberá ser implementado por las subclases
-    abstract public function showInfo();  // Este método deberá ser implementado por las subclases
+    abstract public function prestar();   
+    abstract public function showInfo(); 
 
 }
 ?>
