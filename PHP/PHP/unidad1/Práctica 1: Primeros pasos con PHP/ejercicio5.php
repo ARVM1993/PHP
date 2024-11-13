@@ -44,7 +44,7 @@
         $ganadores = enfrentamientosPersonajes($gruposDePersonajes, $personajes);
         /*array_intersect_key comparará dos arrays asociativos y devolvera las claves,
         mientras que con array_flip cambiará  las claves por los valores de la array de personajes, de forma que el nombre
-        de ambas arrays asociativas sean los mismos, por lo que se pueden comparar directamente*/
+        de ambasd arrays asociativas sean los mismos, por lo que se pueden comparar directamente*/
         
         $personajes = array_intersect_key($personajes, array_flip($ganadores));
         $ronda++;
