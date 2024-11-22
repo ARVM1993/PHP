@@ -28,6 +28,8 @@ session_start()
         }else{
             echo "<p>El tipo de usuario es: $tipo</p>";
         }
+        
     ?>
+
 </body>
 </html>

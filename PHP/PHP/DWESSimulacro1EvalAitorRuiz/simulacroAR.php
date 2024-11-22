@@ -36,7 +36,7 @@ echo $concatenar1 = concatenar("a", "b", "c");
 echo "<br>";
 echo $concatenar2 = concatenar();
 echo "<br>";
-echo $concatenar3 = concatenar("a", 2);
+echo $concatenar3 = concatenar("hola", 2);
 echo "<br>";
 
 echo "<h4>1.4. </h4>";

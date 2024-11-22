@@ -11,9 +11,10 @@ class Principal extends Plato{
         $this->tieneGluten =$tieneGluten;
     }
 
-    public function getTieneGluten(): bool{
-        return $this->tieneGluten;
+    public function getTieneGluten(): string {
+        return $this->tieneGluten ? "Sí" : "No";
     }
+    
 
     public function setTieneGluten($tieneGluten){
         $this->tieneGluten=$tieneGluten;

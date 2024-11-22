@@ -7,11 +7,9 @@ function dividir($numeroDecimal1, $numeroDecimal2=1){
         return $numeroDecimal1/$numeroDecimal2;
     }
 }
-function concatenar() {
-    $parametros = func_get_args();
-    $resultado = "";
-    foreach ($parametros as $parametro) {
-        $resultado .= $parametro;
+
+    function concatenar(...$parametros) {
+        return implode('', $parametros);
     }
-        return $resultado;
-}
+
+

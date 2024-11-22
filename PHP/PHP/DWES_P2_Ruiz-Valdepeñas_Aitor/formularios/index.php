@@ -9,6 +9,8 @@ require_once '../clases/Revista.php';
 require_once '../clases/EjemplarImpreso.php';
 
 session_start();
+
+
 var_dump($_SESSION);
 if (!isset($_SESSION['libros'])) {
     $_SESSION['libros'] = [];
@@ -63,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $isbnLibro = $tituloLibro = $paginasLibro = $autorLibro = $ejemplaresLibro = "";
 
         }
+
     }
 
     if (isset($_POST['crear_revista'])) {
@@ -91,6 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         }
     }
+
 }
 ?>
 

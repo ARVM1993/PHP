@@ -49,10 +49,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["password2"])) {
         $password2Err = "Se requiere repetir la contraseña";
         $errores = true;
-    } elseif ($password !== $password2) {
+        } elseif ($password !== $password2) {
         $password2Err = "Las contraseñas no coinciden";
         $errores = true;
     }
+
+    setcookie("email", $email, time()+5*60);
+    setcookie("name", $name, time()+5*60);
+
+
 
     if (!$errores) {
         echo "<div class='success-message'><p>Registro exitoso: Nombre: $name, Apellido: $surname, Email: $email, DNI: $dni, Lectura: $lectura</p></div>";
@@ -143,7 +148,6 @@ if ($errores) {
         <tr>
             <td colspan="2"><label>Aceptar condiciones</label>
                 <input type="checkbox" name="accept" <?= isset($accept) && $accept ? "checked" : "" ?>>
-                <span style="color: red;"><?= $acceptErr ?></span>
             </td>
         </tr>
         <tr>

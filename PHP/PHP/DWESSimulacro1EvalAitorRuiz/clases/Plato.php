@@ -25,4 +25,3 @@ abstract class Plato{
     abstract function __toString();
 
 }
-
