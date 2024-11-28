@@ -50,7 +50,8 @@ $edad = 25;
 $pass = password_hash($passHash, PASSWORD_DEFAULT);
 //PASSWORD_DEFAULT es el algoritmo de hash que se utiliza por defecto en PHP
 
-// lo comentamos para que no de errores cada vez que lo volvamos a ejecutar $prepared->execute();
+// lo comentamos para que no de errores cada vez que lo volvamos a ejecutar 
+//$prepared->execute();
 
 
 //Esto la parte de registro (login en el formulario)
@@ -81,7 +82,6 @@ if ($resultado->num_rows > 0) {
             }
         } else{
                 echo "El usuario no existe";
-
 }
 ?>
     
