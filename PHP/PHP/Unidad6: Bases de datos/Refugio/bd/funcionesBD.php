@@ -1,6 +1,11 @@
 <?php
 
+include $_SERVER['DOCUMENT_ROOT'] . "/clases/oveja.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/clases/vaca.php";
+
+
 function conectarBD(){
+    
     $user = "root";
     $server = "127.0.0.1";
     $pass = "Sandia4you";
@@ -9,7 +14,7 @@ function conectarBD(){
     $conexion = new mysqli($server, $user, $pass, $db);
     
     if ($conexion->connect_error) {
-        die("Conexión fallida: " . $conexion->connect_error);
+        echo ("Conexión fallid");
     }
     
     return $conexion;
@@ -43,14 +48,14 @@ function guardarOveja(Oveja $oveja){
     $conexion = conectarBD();
     crearTabla();
 
-    $sql = "INSERT INTO `ovejas` (id, peso, especie, enferma) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO `nuevaOveja` (id, peso, especie, enferma) VALUES (?, ?, ?, ?)";
     $stmt = $conexion->prepare($sql);
     
     if ($stmt === false) {
         die("Error al preparar la consulta: " . $conexion->error);
     }
 
-    $stmt->bind_param("siss", $id, $peso, $especie, $enferma);
+    $stmt->bind_param("siss", $oveja->getId(), $oveja->getPeso(), $oveja->getEspecie(), $oveja->getEnferma());
 
     if (!$stmt->execute()) {
         echo "Error al insertar la oveja: " . $stmt->error;

@@ -1,5 +1,5 @@
 <?php
-include_once "./clase/animal.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/clases/animal.php";
 
 class Vaca extends Animal {
 }
