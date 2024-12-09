@@ -5,8 +5,8 @@ class Persona {
     private string $nombre;
 
     public function __construct(string $id, string $nombre){
-        $this->id=$id;
-        $this->nombre=$nombre;
+        $this->id = $id;
+        $this->nombre = $nombre;
     }
 
     public function getId(){
