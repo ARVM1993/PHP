@@ -48,7 +48,6 @@ function crearTabla(){
             echo "Error al crear la tabla: " . $conexion->error . "<br>";
         }
     }
-
     $conexion->close();
 }
 
@@ -103,9 +102,35 @@ function insertarProfesor($profesor) {
     $stmt->close();
     $conexion->close();
 }
-crearTabla();
 
-$profesor = new Profesorado("123456", "Maria Lopez", "Matemáticas", false);
+function insertarAlumnadoProfesorado($profesor, $alumno){
+    $conexion = conectarBD();
+
+    $sql = "INSERT INTO `alumnado_profesorado` (alumno_id, profesor_id) VALUES (?, ?)";
+    $stmt = $conexion->prepare($sql);
+
+    if ($stmt === false) {
+        die("Error al preparar la consulta: " . $conexion->error);
+    }
+
+    $id_profesor = $profesor->getId();
+    $id_alumno = $alumno->getId();
+
+    $stmt->bind_param("ss", $id_alumno, $id_profesor);
+    if (!$stmt->execute()) {
+        echo "Error al insertar el ID: " . $stmt->error . "<br>";
+    } else {
+        echo "ID insertados correctamente. <br>";
+    }
+
+    $stmt->close();
+    $conexion->close();
+}
+
+
+crearTabla();
+$profesor = new Profesorado("110", "Sete", "DAW", false);
 insertarProfesor($profesor);
-$alumno = new Alumnado("54321", "Juan Perez", 13, true);
+$alumno = new Alumnado("255", "Aitor", 31, true);
 insertarAlumno($alumno);
+insertarAlumnadoProfesorado($profesor, $alumno);
