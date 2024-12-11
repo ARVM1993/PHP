@@ -2,8 +2,6 @@
 
 include_once $_SERVER['DOCUMENT_ROOT'] . "/Instituto/clases/persona.php";
 
-
-
 class Profesorado extends Persona {
     private string $departamento;
     private bool $interino;
@@ -22,4 +20,3 @@ class Profesorado extends Persona {
         return $this->interino;
     }
 }
-

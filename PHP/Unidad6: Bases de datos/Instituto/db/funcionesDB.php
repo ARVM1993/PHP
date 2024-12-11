@@ -127,7 +127,6 @@ function insertarAlumnadoProfesorado($profesor, $alumno){
     $conexion->close();
 }
 
-
 crearTabla();
 $profesor = new Profesorado("110", "Sete", "DAW", false);
 insertarProfesor($profesor);
