@@ -21,7 +21,7 @@ class Warrior extends Character{
     }
 
     public function __toString(){
-        return parent:: __toString() . "Weapon: . $this->weapon";
+        return parent::__toString() . " Weapon: $this->weapon";
        }
 
     public function aumentarDaño(){
