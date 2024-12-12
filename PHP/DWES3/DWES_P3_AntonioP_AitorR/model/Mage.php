@@ -31,8 +31,8 @@ class Mage extends Character{
     }
 
        public function __toString(){
-        return parent::__toString() . " Dodge: " . ($this->dodge ? "Yes" : "No") . " Health: $this->health";
-    }
+        return parent:: __toString() . "Dodge: " . $this->dodge ? "Yes" : "NO" . "Health: $this->health";
+       }
 
        public function dodging(){
         $randomNumber = rand(0,1);
