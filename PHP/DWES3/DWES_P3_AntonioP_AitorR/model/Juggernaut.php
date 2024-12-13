@@ -1,6 +1,8 @@
 <?php
+
+include_once "./Character.php";
 class Juggernaut extends Character{
-    private int $resistance;
+    private string $resistance;
 
     public function __construct(string $type,string $name, int $hp, float $damage, int $level, int $numBattle, string $resistance){
         parent::__construct($type, $name,  $hp,  $damage,  $level,  $numBattle);
@@ -30,5 +32,6 @@ class Juggernaut extends Character{
     }
     
 }
+
 
 ?>

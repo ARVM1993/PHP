@@ -1,5 +1,5 @@
 <?php
-abstract class Character{
+class Character{
     private string $type;
     private string $name;
     private int $hp;
@@ -103,5 +103,6 @@ abstract class Character{
     
     }
 }
+
 
 ?>

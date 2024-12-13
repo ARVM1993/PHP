@@ -1,5 +1,7 @@
 <?php
 
+include_once "./Character.php";
+
 class Warrior extends Character{
     private string $weapon;
 
@@ -33,4 +35,7 @@ class Warrior extends Character{
     function __toString(){
         return parent::__toString() . "Type of weapon: $this->weapon";
     }
+
 }
+$guerrero = new Warrior("Humano", "Guerrero", 100, 20.54, 1, 1, "espada");
+echo $guerrero;
