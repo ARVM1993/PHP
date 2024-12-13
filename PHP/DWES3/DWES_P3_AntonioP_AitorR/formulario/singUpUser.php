@@ -1,5 +1,7 @@
 <?php
 include_once "../funciones/securizar.php";
+include_once "../model/User.php";
+include_once "../funciones/funcionesDB.php";
 session_start();
 
 $user = $password = $passwordConf = $email = "";
@@ -15,6 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($user)) {
         $userErr = "No puede estar vacío.";
         $error = true;
+    } elseif(existeNombre($user)){
+        $userErr = "Nombre de usuario ya existe.";
+        $error = true;
     }
 
     if (empty($email)) {
@@ -22,6 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = true;
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $emailErr = "Formato de correo inválido.";
+        $error = true;
+    } elseif(existeMail($email)){
+        $emailErr = "Correo electrónico ya existe.";
         $error = true;
     }
 
@@ -51,6 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["u"] = $user;
         $_SESSION["email"] = $email;
         $_SESSION["origin"] = "signup";
+        $usuario = new User($user, $email, $hashedPassword);
+        insertarUsuario($usuario);
         header("Location: ./index.php");
     }
 }
@@ -63,39 +73,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            padding-top: 50px;
-        }
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .error {
-            color: red;
-            font-size: 0.875rem;
-        }
-        .input-group {
-            margin-bottom: 20px;
-        }
-        .fa-eye, .fa-eye-slash {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            cursor: pointer;
-        }
-        label {
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="./style/formulario.css">
+   
 </head>
 <body>
 
@@ -131,6 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <button type="submit" class="btn btn-primary w-100">Registrar</button>
+            <span>¿Ya estás registrado? <a href="./login.php">Iniciar sesión</a></span>
         </form>
     </div>
 </div>

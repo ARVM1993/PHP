@@ -1,49 +1,62 @@
 <?php
-
 include_once "./Character.php";
 
-class Mage extends Character {
+class Mage extends Character{
     private bool $dodge;
     private int $health;
 
-    public function __construct(string $type, string $name, int $hp, float $damage, int $level, int $numBattle, bool $dodge, int $health) {
-        parent::__construct($type, $name, $hp, $damage, $level, $numBattle);
-        $this->dodge = $dodge;
-        $this->health = $health;
+    public function __construct(string $type,string $name, int $hp, float $damage, int $level, int $numBattle, bool $dodge, int $health){
+        parent::__construct($type, $name,  $hp,  $damage,  $level,  $numBattle);
+
+        $this->dodge=$dodge;
+        $this->health=$health;
     }
 
-    public function getDodge() {
+    public function getDodge(){
         return $this->dodge;
     }
-
-    public function setDodge($dodge) {
+    public function setDodge($dodge){
         $this->dodge = $dodge;
+
         return $this;
     }
 
-    public function getHealth() {
+    public function getHealth(){
         return $this->health;
     }
 
-    public function setHealth($health) {
+    public function setHealth($health){
         $this->health = $health;
+
         return $this;
     }
 
-    public function __toString() {
-        $dodgeStatus = $this->dodge ? "Yes" : "No";
-        return parent::__toString() . "\nDodge: {$dodgeStatus}\nHealth: {$this->health}";
-    }
+       public function __toString(){
+        return parent:: __toString() . "Dodge: " . $this->dodge ? "Yes" : "NO" . "Health: $this->health";
+       }
 
-    public function dodging() {
-        $this->dodge = (bool)rand(0, 1);
-        return $this->dodge ? "You dodged the attack" : "You didn't dodge the attack";
+       public function dodging(&$damage){
+        $randomNumber = rand(0,1);
+        if ($randomNumber == 0){
+            $this->dodge = true;
+            echo "You dodged the attack";
+            $damage = 0;
+        }else{
+            $this->dodge = false;
+            echo "You didn't dodge the attack";
+        }
     }
-
-    public function cure() {
-        $healingAmount = $this->health * 0.5; // Heal 50% of max health
-        $newHp = min($this->getHp() + $healingAmount, $this->health); // Cap HP to max health
-        $this->setHp($newHp);
+    public function cure(){
+    $cure = $this->health * 0.5;    
+    $currentHp = $this->getHp();   
+    $newHp = $currentHp + $cure; 
+    
+    if ($newHp > $this->health) {
+        $newHp = $this->health;
+    }
+    
+    $this->setHp($newHp);
     }
 }
-
+    $mago = new Mage("guerrero", "Aitor", 4,5,5,3,false, 100);
+?>
