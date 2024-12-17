@@ -1,13 +1,15 @@
 <?php
 include_once "../funciones/securizar.php";
+include_once "../database/funcionesDB.php";
+include_once "../database/funcionesUsuarios.php";
 $nUsuario = $email = $password = "";
 $nUsuarioErr = $emailErr = $passwordErr = "";
 $error = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nUsuario = securizar($_POST["nombre"]);
+    $nUsuario = isset($_POST["nombre"]) ? securizar($_POST["nombre"]) : '' ;
     $email = isset($_POST["email"]) ? securizar($_POST["email"]) : '';
-    $password = isset($_POST["pass"]) ? securizar($_POST["pass"]) : '';
+    $password = securizar($_POST["pass"]);
 
     if (empty($nUsuario)) {
         $nUsuarioErr = "No puede estar vacío.";
@@ -26,11 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $passwordErr = "Rellena la contraseña.";
         $error = true;
     } elseif(!$nUsuario){
-        if(!verificarPassEmail($email, $password)){
-            $passwordErr = "El email o la contraseña es incorrecto";
+        if(!existeNombre($nUsuario) || !verificarPassEmail($email, $password)){
+            $nUsuarioErr = "Tienes que introducir un nombre de usuario existente";
             $error = true;
         }
-    }
+    } elseif(!$email){
+        if(!verificarPassName($nUsuario, $password)){
+            $passwordErr = "El nombre o la contraseña es incorrecto";
+            $error = true;
+        }        
+    } 
 
     setcookie("user", $nUsuario, time() + 5 * 60);
     setcookie("email", $email, time() + 5 * 60);
@@ -58,22 +65,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="form-container">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <h3 class="text-center">Formulario de Registro</h3>
+            <h3 class="text-center">Iniciar Sesión</h3>
 
             <div class="mb-3">
-                <label>Selecciona una forma de registro</label>
-                <div class="form-check">
-                    <input type="radio" class="form-check-input" name="usuario" id="login">
+                <div class="row">
+                <label class="cabecera">FORMA DE INICIO</label>
+                <div class="form-check col-6">
+                    <input type="radio" class="cabecera form-check-input" name="usuario" id="login">
                     <label for="login" class="form-check-label">Nombre de usuario</label>
                 </div>
-                <div class="form-check">
+                <div class="form-check col-6">
                     <input type="radio" class="form-check-input" name="usuario" id="corr">
                     <label for="corr" class="form-check-label">Correo electrónico</label>
                 </div>
             </div>
+            </div>
 
             <div class="mb-3">
-                <label id="labelInput">NOMBRE DE USUARIO</label>
+                <label id="labelInput" class="cabecera">NOMBRE DE USUARIO: </label>
                 <input 
                     type="text" 
                     name="nombre" 
@@ -84,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="mb-3 position-relative">
-                <label for="pass" class="form-label">CONTRASEÑA:</label>
+                <label for="pass" class="cabecera form-label">CONTRASEÑA:</label>
                 <input 
                     type="password" 
                     name="pass" 
@@ -125,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         });
 
         botonUsuario.addEventListener("click", () => {
-            label.textContent = "NOMBRE DE USUARIO"; 
+            label.textContent = "NOMBRE DE USUARIO: "; 
             input.type = "text"; 
             input.name = "nombre";  
             input.value = "<?php echo $nUsuario; ?>";  
@@ -133,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         });
 
         botonCorreo.addEventListener("click", () => {
-            label.textContent = "CORREO";  
+            label.textContent = "CORREO: ";  
             input.type = "email";  
             input.name = "email";  
             input.value = "<?php echo $email; ?>";  

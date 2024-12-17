@@ -1,7 +1,8 @@
 <?php
 include_once "../funciones/securizar.php";
 include_once "../model/User.php";
-include_once "../funciones/funcionesDB.php";
+include_once "../database/funcionesDB.php";
+include_once "../database/funcionesUsuarios.php";
 session_start();
 
 $user = $password = $passwordConf = $email = "";
@@ -73,6 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./style/formulario.css">
    
@@ -81,12 +83,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="container">
     <div class="form-container">
-        <h2 class="text-center mb-4">Registro</h2>
+        <h3 class="text-center mb-4">Registro</h3>
 
         <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
             
             <div class="mb-3">
-                <label for="user" class="form-label">USUARIO:</label>
+                <label for="user" class="form-label" >USUARIO:</label>
                 <input type="text" name="user" id="user" class="form-control <?php if(!empty($userErr)) echo 'is-invalid'; ?>" value="<?php echo $user ?>" />
                 <div class="invalid-feedback"><?php echo $userErr ?></div>
             </div>
