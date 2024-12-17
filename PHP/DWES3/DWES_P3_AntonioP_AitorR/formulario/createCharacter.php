@@ -45,49 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create</title>
-    <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .form-container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            margin: 30px auto;
-            max-width: 600px;
-        }
-        h1 {
-            color: #007bff;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-        .btn-secondary {
-            background-color: #6c757d;
-        }
-        .btn-secondary:hover {
-            background-color: #5a6268;
-        }
-        .form-select, .form-control {
-            border-radius: 5px;
-        }
-        .text-danger {
-            font-size: 0.9rem;
-        }
-        .form-label {
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="./style/createCharacterStyle.css">
+
 </head>
 <body>
 <div class="container mt-5">
@@ -135,40 +95,73 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    const choose = document.getElementById('choose');
-    const weaponContainer = document.getElementById('weapon');
+const choose = document.getElementById('choose');
+const weaponContainer = document.getElementById('weapon');
 
-    const warriorWeapons = ["Sword", "Shield"];
+// Function to create input fields dynamically
+function createInputField(labelText, name, type, placeholder) {
+    const div = document.createElement("div");
+    div.className = "mb-3";
 
-    choose.addEventListener("change", () => {
-        weaponContainer.innerHTML = "";
+    const label = document.createElement("label");
+    label.textContent = labelText;
+    label.className = "form-label";
+    div.appendChild(label);
 
-        if (choose.value === "warrior") {
-            const label = document.createElement("label");
-            label.textContent = "Choose your weapon:";
-            label.className = "form-label";
-            weaponContainer.appendChild(label);
+    const input = document.createElement("input");
+    input.type = type;
+    input.name = name;
+    input.id = name;
+    input.className = "form-control";
+    input.placeholder = placeholder;
+    div.appendChild(input);
 
-            const select = document.createElement("select");
-            select.name = "weapon";
-            select.id = "weapon-select";
-            select.className = "form-select";
+    return div;
+}
 
-            const defaultOption = document.createElement("option");
-            defaultOption.value = "0";
-            defaultOption.textContent = "Choose a weapon";
-            select.appendChild(defaultOption);
+const warriorWeapons = ["Sword", "Shield"];
 
-            warriorWeapons.forEach(weapon => {
-                const option = document.createElement("option");
-                option.value = weapon.toLowerCase();
-                option.textContent = weapon;
-                select.appendChild(option);
-            });
+choose.addEventListener("change", () => {
+    weaponContainer.innerHTML = "";
 
-            weaponContainer.appendChild(select);
-        }
-    });
+    if (choose.value === "warrior") {
+        const label = document.createElement("label");
+        label.textContent = "Choose your weapon:";
+        label.className = "form-label";
+        weaponContainer.appendChild(label);
+
+        const select = document.createElement("select");
+        select.name = "weapon";
+        select.id = "weapon-select";
+        select.className = "form-select";
+
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "0";
+        defaultOption.textContent = "Choose a weapon";
+        select.appendChild(defaultOption);
+
+        warriorWeapons.forEach(weapon => {
+            const option = document.createElement("option");
+            option.value = weapon.toLowerCase();
+            option.textContent = weapon;
+            select.appendChild(option);
+        });
+
+        weaponContainer.appendChild(select);
+    } else if (choose.value === "mage") {
+        const typeInput = createInputField("Type:", "type", "text", "e.g., mage");
+        const nameInput = createInputField("Name:", "mageName", "text", "Enter character's name");
+        const levelInput = createInputField("Level:", "level", "number", "0");
+        const numBattleInput = createInputField("Number of Battles:", "numBattle", "number", "0");
+
+        weaponContainer.appendChild(typeInput);
+        weaponContainer.appendChild(nameInput);
+        weaponContainer.appendChild(levelInput);
+        weaponContainer.appendChild(numBattleInput);
+    } else if (choose.value === "juggernaut") {
+        // Add special inputs for Juggernaut here if needed
+    }
+});
 </script>
 </body>
 </html>
