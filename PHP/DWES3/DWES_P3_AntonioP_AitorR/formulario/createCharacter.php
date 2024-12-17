@@ -5,7 +5,7 @@ include_once "../database/funcionesUsuarios.php";
 
 $name = $weapon = "";
 $choose = isset($_POST["choose"]) ? $_POST["choose"] : "0"; 
-$nameErr = $chooseErr = $weaponErr = "";
+$nameErr = $chooseErr = $weaponErr = $typeErr = $levelErr = $numBattleErr = $resistanceErr = "";
 $error = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -25,6 +25,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $weapon = isset($_POST["weapon"]) ? $_POST["weapon"] : "0";
         if ($weapon == "0") {
             $weaponErr = "Elige un arma";
+            $error = true;
+        }
+    }
+
+    if ($choose == "mage" || $choose == "juggernaut") {
+        if (empty($_POST["type"])) {
+            $typeErr = "El tipo no puede estar vacío.";
+            $error = true;
+        }
+
+        if (empty($_POST["mageName"])) {
+            $nameErr = "El nombre no puede estar vacío.";
+            $error = true;
+        }
+
+        if (!is_numeric($_POST["level"])) {
+            $levelErr = "El nivel debe ser un número.";
+            $error = true;
+        }
+
+        if (!is_numeric($_POST["numBattle"])) {
+            $numBattleErr = "El número de batallas debe ser un número.";
+            $error = true;
+        }
+
+        if ($choose == "juggernaut" && !is_numeric($_POST["resistance"])) {
+            $resistanceErr = "La resistencia debe ser un número.";
             $error = true;
         }
     }
@@ -96,9 +123,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <script>
 const choose = document.getElementById('choose');
-const weaponContainer = document.getElementById('weapon');
+const container = document.getElementById('weapon');
 
-// Function to create input fields dynamically
 function createInputField(labelText, name, type, placeholder) {
     const div = document.createElement("div");
     div.className = "mb-3";
@@ -122,13 +148,13 @@ function createInputField(labelText, name, type, placeholder) {
 const warriorWeapons = ["Sword", "Shield"];
 
 choose.addEventListener("change", () => {
-    weaponContainer.innerHTML = "";
+    container.innerHTML = "";
 
     if (choose.value === "warrior") {
         const label = document.createElement("label");
         label.textContent = "Choose your weapon:";
         label.className = "form-label";
-        weaponContainer.appendChild(label);
+        container.appendChild(label);
 
         const select = document.createElement("select");
         select.name = "weapon";
@@ -147,19 +173,39 @@ choose.addEventListener("change", () => {
             select.appendChild(option);
         });
 
-        weaponContainer.appendChild(select);
-    } else if (choose.value === "mage") {
-        const typeInput = createInputField("Type:", "type", "text", "e.g., mage");
+        container.appendChild(select);
+        const typeInput = createInputField("Type:", "type", "text", "Ej: juggernaut");
         const nameInput = createInputField("Name:", "mageName", "text", "Enter character's name");
         const levelInput = createInputField("Level:", "level", "number", "0");
         const numBattleInput = createInputField("Number of Battles:", "numBattle", "number", "0");
 
-        weaponContainer.appendChild(typeInput);
-        weaponContainer.appendChild(nameInput);
-        weaponContainer.appendChild(levelInput);
-        weaponContainer.appendChild(numBattleInput);
+        container.appendChild(typeInput);
+        container.appendChild(nameInput);
+        container.appendChild(levelInput);
+        container.appendChild(numBattleInput);
+    } else if (choose.value === "mage") {
+        const typeInput = createInputField("Type:", "type", "text", "Ej: mage");
+        const nameInput = createInputField("Name:", "mageName", "text", "Enter character's name");
+        const levelInput = createInputField("Level:", "level", "number", "0");
+        const numBattleInput = createInputField("Number of Battles:", "numBattle", "number", "0");
+
+        container.appendChild(typeInput);
+        container.appendChild(nameInput);
+        container.appendChild(levelInput);
+        container.appendChild(numBattleInput);
+
     } else if (choose.value === "juggernaut") {
-        // Add special inputs for Juggernaut here if needed
+        const typeInput = createInputField("Type:", "type", "text", "Ej: juggernaut");
+        const nameInput = createInputField("Name:", "mageName", "text", "Enter character's name");
+        const levelInput = createInputField("Level:", "level", "number", "0");
+        const numBattleInput = createInputField("Number of Battles:", "numBattle", "number", "0");
+        const resistanceInput = createInputField("Resistance:", "resistance", "number", "0");
+
+        container.appendChild(typeInput);
+        container.appendChild(nameInput);
+        container.appendChild(levelInput);
+        container.appendChild(numBattleInput);
+        container.appendChild(resistanceInput);
     }
 });
 </script>
