@@ -7,6 +7,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/model/Mage.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/model/Juggernaut.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/model/Character.php";
 
+
 $name = $level =$weapon = "";
 $choose = isset($_POST["choose"]) ? $_POST["choose"] : "0"; 
 $nameErr = $chooseErr = $weaponErr = $levelErr = "";
