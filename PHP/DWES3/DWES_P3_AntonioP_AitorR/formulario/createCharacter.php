@@ -1,11 +1,15 @@
 <?php
-include_once "../funciones/securizar.php";
-include_once "../database/funcionesDB.php";
-include_once "../database/funcionesUsuarios.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/funciones/securizar.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/database/funcionesCharacter.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/database/funcionesDB.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/model/Warrior.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/model/Mage.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/model/Juggernaut.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/model/Character.php";
 
-$name = $weapon = "";
+$name = $level =$weapon = "";
 $choose = isset($_POST["choose"]) ? $_POST["choose"] : "0"; 
-$nameErr = $chooseErr = $weaponErr = $typeErr = $levelErr = $numBattleErr = $resistanceErr = "";
+$nameErr = $chooseErr = $weaponErr = $levelErr = "";
 $error = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -40,25 +44,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error = true;
         }
 
-        if (!is_numeric($_POST["level"])) {
-            $levelErr = "El nivel debe ser un número.";
+        if (empty($_POST["level"])) {
+            $levelErr = "El nivel no puede estar vacio.";
             $error = true;
-        }
 
-        if (!is_numeric($_POST["numBattle"])) {
-            $numBattleErr = "El número de batallas debe ser un número.";
-            $error = true;
-        }
-
-        if ($choose == "juggernaut" && !is_numeric($_POST["resistance"])) {
-            $resistanceErr = "La resistencia debe ser un número.";
+        } else if($_POST["level"] > 5){
+            $levelErr = "El nivel no puede ser mayor que 5.";
             $error = true;
         }
     }
 
     setcookie("name", $name, time() + 5 * 60);
 
+
     if (!$error) {
+        if ($choose == "warrior") {
+            createTableWarrior();
+            $warrior = new Warrior($name, $level, $weapon);
+            insertWarrior($warrior); 
+        }elseif($choose=="mage"){
+            createTableMage();
+        }else{
+            createTableJuggernaut();
+        }
         $_SESSION["u"] = $name;
         header("Location: ./index.php");
         exit;
@@ -174,37 +182,21 @@ choose.addEventListener("change", () => {
         });
 
         container.appendChild(select);
-        const typeInput = createInputField("Type:", "type", "text", "Ej: juggernaut");
-        const nameInput = createInputField("Name:", "mageName", "text", "Enter character's name");
-        const levelInput = createInputField("Level:", "level", "number", "0");
-        const numBattleInput = createInputField("Number of Battles:", "numBattle", "number", "0");
+        const levelInput = createInputField("Level:", "level", "number", 0);
 
-        container.appendChild(typeInput);
-        container.appendChild(nameInput);
         container.appendChild(levelInput);
-        container.appendChild(numBattleInput);
-    } else if (choose.value === "mage") {
-        const typeInput = createInputField("Type:", "type", "text", "Ej: mage");
-        const nameInput = createInputField("Name:", "mageName", "text", "Enter character's name");
-        const levelInput = createInputField("Level:", "level", "number", "0");
-        const numBattleInput = createInputField("Number of Battles:", "numBattle", "number", "0");
 
-        container.appendChild(typeInput);
-        container.appendChild(nameInput);
+    } else if (choose.value === "mage") {
+        const levelInput = createInputField("Level:", "level", "number", 0);
+
         container.appendChild(levelInput);
         container.appendChild(numBattleInput);
 
     } else if (choose.value === "juggernaut") {
-        const typeInput = createInputField("Type:", "type", "text", "Ej: juggernaut");
-        const nameInput = createInputField("Name:", "mageName", "text", "Enter character's name");
-        const levelInput = createInputField("Level:", "level", "number", "0");
-        const numBattleInput = createInputField("Number of Battles:", "numBattle", "number", "0");
-        const resistanceInput = createInputField("Resistance:", "resistance", "number", "0");
+        const levelInput = createInputField("Level:", "level", "number", 0);
+        const resistanceInput = createInputField("Resistance:", "resistance", "number", 0);
 
-        container.appendChild(typeInput);
-        container.appendChild(nameInput);
         container.appendChild(levelInput);
-        container.appendChild(numBattleInput);
         container.appendChild(resistanceInput);
     }
 });
