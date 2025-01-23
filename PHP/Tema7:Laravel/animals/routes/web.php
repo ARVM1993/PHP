@@ -8,7 +8,7 @@ Route::get('/', function () {
 });
 
 Route::get("/hello", function () {
-    return "Hello, World!";
+    return "Hello, World!" ;
 });
 
 Route::get("/user/{id}", function (string $id) {
